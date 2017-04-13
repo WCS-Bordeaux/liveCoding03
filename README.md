@@ -2,6 +2,13 @@
 
 ### JSON
 
+```
+{
+  "key1": "value1",
+  "key2": "value2"
+}
+```
+
 [JSON](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/JSON)
 
 ### DOM
