@@ -1,4 +1,12 @@
 
+
+/*
+
+  SECTION 1: FETCH ARTICLES AND INSERT INTO THE DOM
+
+*/
+
+
 function createArticle(article) {
 
   console.log(article);
@@ -66,9 +74,7 @@ function generateArticles(articles) {
 var xhr = new XMLHttpRequest();
 
 if (xhr) {
-
-  xhr.onreadystatechange = function() {
-
+  xhr.onreadystatechange = function () {
     console.log(xhr.readyState);
     if (xhr.readyState === XMLHttpRequest.DONE) {
       // la requete est completement terminé
@@ -83,13 +89,47 @@ if (xhr) {
       }
     }
   };
-
-
   xhr.open("GET", "http://localhost:3000/posts");
   xhr.send();
+}
 
 
+/*
+
+  SECTION 2: ADD ARTICLE
+
+*/
 
 
+function addArticle() {
+  var title = document.getElementById("title").value;
+  var author = document.getElementById("author").value;
+  var content = document.getElementById("content").value;
+
+  var obj = {
+    title: title,
+    author: author,
+    content: content
+  }
+
+  var postData = new XMLHttpRequest();
+
+  if (postData) {
+
+    postData.onreadystatechange = function () {
+      if (postData.readyState === XMLHttpRequest.DONE) {
+        // la requete est completement terminé
+        if (postData.status === 200) {
+          alert("fini");
+        }
+      }
+    }
+
+    postData.open("POST", "http://localhost:3000/posts");
+    postData.setRequestHeader("Content-Type", "application/json");
+    postData.send(JSON.stringify(obj));
+  }
 
 }
+
+document.getElementById("sendArticle").addEventListener("click", addArticle);
