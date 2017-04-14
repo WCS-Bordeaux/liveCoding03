@@ -1,4 +1,14 @@
 
+var my$ = document.querySelectorAll.bind(document);
+
+var c1 = document.getElementById("container");
+var c2 = my$("#container");
+var c3 = $("#container");
+
+console.log("jsNatif", c1);
+console.log("my dollar", c2);
+console.log("jquery", c3);
+
 //récuperer un identifiant
 var container = document.getElementById("container");
 console.log(getComputedStyle(container).backgroundColor);
